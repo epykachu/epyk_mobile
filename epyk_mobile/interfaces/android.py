@@ -29,6 +29,9 @@ from epyk_mobile.core.constants import (
     TextStyleEnum,
     TypefaceEnum,
     ScaleTypeEnum,
+    DescendantFocusabilityEnum,
+    LayoutModeEnum,
+    PersistentDrawingCache,
 )
 
 
@@ -41,14 +44,14 @@ class AppLayout:
 
 
 @dataclass
-class AndroidViewObject:
+class ViewObject:
     id: str
     layout_width: str
     layout_height: str
 
 
 @dataclass
-class AndroidViewDefault:
+class ViewDefault:
     accessibilityHeading: bool = None
     accessibilityLiveRegion: int = None
     accessibilityPaneTitle: str = None
@@ -148,7 +151,22 @@ class AndroidViewDefault:
 
 
 @dataclass
-class ImageView(AndroidViewDefault, AndroidViewObject):
+class ViewGroup(ViewDefault, ViewObject):
+    addStatesFromChildren: bool = None
+    alwaysDrawnWithCache: bool = None
+    animateLayoutChanges: bool = None
+    animationCache: bool = None
+    clipChildren: bool = None
+    clipToPadding: bool = None
+    descendantFocusability: DescendantFocusabilityEnum = None
+    layoutAnimation: str = None
+    layoutMode: LayoutModeEnum = None
+    persistentDrawingCache: PersistentDrawingCache = None
+    splitMotionEvents: bool = None
+
+
+@dataclass
+class ImageView(ViewDefault, ViewObject):
     adjustViewBounds: bool = None
     baseline: str = None
     baselineAlignBottom: bool = None
@@ -162,7 +180,7 @@ class ImageView(AndroidViewDefault, AndroidViewObject):
 
 
 @dataclass
-class TextViewObject(AndroidViewDefault, AndroidViewObject):
+class TextViewObject(ViewDefault, ViewObject):
     """
     Python interface for the TextView Android object
 

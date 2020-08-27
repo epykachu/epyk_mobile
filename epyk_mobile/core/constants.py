@@ -239,3 +239,21 @@ class ScaleTypeEnum(enum.Enum):
     fitStart = 2
     fitXY = 1
     matrix = 0
+
+
+class DescendantFocusabilityEnum(enum.Enum):
+    afterDescendants = 1
+    beforeDescendants = 0
+    blocksDescendants = 2
+
+
+class LayoutModeEnum(enum.Enum):
+    clipBounds = 0
+    opticalBounds = 1
+
+
+class PersistentDrawingCache(enum.Enum):
+    all = 3
+    animation = 1
+    none = 0
+    scrolling = 2
