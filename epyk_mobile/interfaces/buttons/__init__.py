@@ -1,9 +1,7 @@
 from dataclasses import dataclass
-
-from epyk_mobile.interfaces.android import AndroidViewObject, AndroidViewDefault
-from epyk_mobile.interfaces.text import TextiViewObject
+from epyk_mobile.interfaces.android import TextViewObject
 
 
 @dataclass
-class Button(TextiViewObject):
+class Button(TextViewObject):
     pass

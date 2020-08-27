@@ -228,3 +228,14 @@ class TypefaceEnum(enum.Enum):
     sans = 1
     normal = 0
     serif = 2
+
+
+class ScaleTypeEnum(enum.Enum):
+    center = 5
+    centerCrop = 6
+    centerInside = 7
+    fitCenter = 3
+    fitEnd = 4
+    fitStart = 2
+    fitXY = 1
+    matrix = 0
