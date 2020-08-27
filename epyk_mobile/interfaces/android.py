@@ -1,122 +1,131 @@
 from dataclasses import dataclass
 
-from epyk_mobile.core.constants import (TintModeEnum,
-                                    GravityEnum,
-                                    ImportantEnum,
-                                    LayerEnum,
-                                    LayoutDirectionEnum,
-                                    FadingEnum,
-                                    ScrollEnum,
-                                    StyleEnum,
-                                    ScrollbarsEnum,
-                                    AlignEnum,
-                                    TextDirectionEnum,
-                                    VisibilityEnum
-                                )
+from epyk_mobile.core.constants import (
+    TintModeEnum,
+    GravityEnum,
+    ImportantEnum,
+    LayerEnum,
+    LayoutDirectionEnum,
+    FadingEnum,
+    ScrollEnum,
+    StyleEnum,
+    ScrollbarsEnum,
+    AlignEnum,
+    TextDirectionEnum,
+    VisibilityEnum,
+)
 
-class ToolsLayout(object):
+
+class ToolsLayout:
     pass
 
-class AppLayout(object):
+
+class AppLayout:
     pass
+
 
 @dataclass
-class AndroidViewObject(object):
+class AndroidViewObject:
     id: str
-    accessibilityHeading: bool
-    accessibilityLiveRegion: int
-    accessibilityPaneTitle: str
-    accessibilityTraversalAfter: int
-    accessibilityTraversalBefore: int
-    alpha: float
-    autofillHints: str
-    autofilledHighlight: str
-    background: int
-    backgroundTint: str
-    backgroundTintMode: TintModeEnum
-    clickable: bool
-    contentDescription: str
-    contextClickable: bool
-    defaultFocusHighlightEnabled: bool
-    drawingCacheQuality: int
-    duplicateParentState: float
-    elevation: float
-    fadeScrollbars: bool
-    fadingEdgeLength: str
-    filterTouchesWhenObscured: bool
-    fitsSystemWindows: bool
-    focusable: int
-    focusableInTouchMode: bool
-    focusedByDefault: bool
-    forceHasOverlappingRendering: bool
-    foreground: str
-    foregroundGravity: GravityEnum
-    foregroundTint: str
-    foregroundTintMode: TintModeEnum
-    hapticFeedbackEnabled: bool
-    importantForAccessibility: int
-    importantForAutofill: ImportantEnum
-    importantForContentCapture: ImportantEnum
-    isScrollContainer: bool
-    keepScreenOn: bool
-    keyboardNavigationCluster: bool
-    layerType: LayerEnum
-    layoutDirection: LayoutDirectionEnum
-    longClickable: bool
-    minHeight: str
-    minWidth: str
-    nextClusterForward: str
-    nextFocusDown: str
-    nextFocusForward: str
-    nextFocusLeft: str
-    nextFocusRight: str
-    nextFocusUp: str
-    onClick: str
-    outlineAmbientShadowColor: str
-    outlineSpotShadowColor: str
-    padding: str
-    paddingBottom: str
-    paddingEnd: str
-    paddingHorizontal: str
-    paddingLeft: str
-    paddingRight: str
-    paddingStart: str
-    paddingTop: str
-    paddingVertical: str
-    requiresFadingEdge: FadingEnum
-    rotation: float
-    rotationX: float
-    rotationY: float
-    saveEnabled: bool
-    scaleX: float
-    scaleY: float
-    screenReaderFocusable: bool
-    scrollIndicators: ScrollEnum
-    scrollX: str
-    scrollY: str
-    scrollbarAlwaysDrawHorizontalTrack: bool
-    scrollbarAlwaysDrawVerticalTrack: bool
-    scrollbarDefaultDelayBeforeFade: int
-    scrollbarFadeDuration: int
-    scrollbarSize: str
-    scrollbarStyle: StyleEnum
-    scrollbarThumbHorizontal: str
-    scrollbarThumbVertical: str
-    scrollbarTrackHorizontal: str
-    scrollbarTrackVertical: str
-    scrollbars: ScrollbarsEnum
-    soundEffectsEnabled: bool
-    stateListAnimator: str
-    tag: str
-    textAlignment: AlignEnum
-    textDirection: TextDirectionEnum
-    theme: str
-    tooltipText: str
-    transformPivotX: str
-    transformPivotY: str
-    transitionName: str
-    translationX: str
-    translationY: str
-    translationZ: str
-    visibility: VisibilityEnum
+    layout_width: str
+    layout_height: str
 
+
+@dataclass
+class AndroidViewDefault:
+    accessibilityHeading: bool = None
+    accessibilityLiveRegion: int = None
+    accessibilityPaneTitle: str = None
+    accessibilityTraversalAfter: int = None
+    accessibilityTraversalBefore: int = None
+    alpha: float = None
+    autofillHints: str = None
+    autofilledHighlight: str = None
+    background: int = None
+    backgroundTint: str = None
+    backgroundTintMode: TintModeEnum = None
+    clickable: bool = None
+    contentDescription: str = None
+    contextClickable: bool = None
+    defaultFocusHighlightEnabled: bool = None
+    drawingCacheQuality: int = None
+    duplicateParentState: float = None
+    elevation: float = None
+    fadeScrollbars: bool = None
+    fadingEdgeLength: str = None
+    filterTouchesWhenObscured: bool = None
+    fitsSystemWindows: bool = None
+    focusable: int = None
+    focusableInTouchMode: bool = None
+    focusedByDefault: bool = None
+    forceHasOverlappingRendering: bool = None
+    foreground: str = None
+    foregroundGravity: GravityEnum = None
+    foregroundTint: str = None
+    foregroundTintMode: TintModeEnum = None
+    hapticFeedbackEnabled: bool = None
+    importantForAccessibility: int = None
+    importantForAutofill: ImportantEnum = None
+    importantForContentCapture: ImportantEnum = None
+    isScrollContainer: bool = None
+    keepScreenOn: bool = None
+    keyboardNavigationCluster: bool = None
+    layerType: LayerEnum = None
+    layoutDirection: LayoutDirectionEnum = None
+    longClickable: bool = None
+    minHeight: str = None
+    minWidth: str = None
+    nextClusterForward: str = None
+    nextFocusDown: str = None
+    nextFocusForward: str = None
+    nextFocusLeft: str = None
+    nextFocusRight: str = None
+    nextFocusUp: str = None
+    onClick: str = None
+    outlineAmbientShadowColor: str = None
+    outlineSpotShadowColor: str = None
+    padding: str = None
+    paddingBottom: str = None
+    paddingEnd: str = None
+    paddingHorizontal: str = None
+    paddingLeft: str = None
+    paddingRight: str = None
+    paddingStart: str = None
+    paddingTop: str = None
+    paddingVertical: str = None
+    requiresFadingEdge: FadingEnum = None
+    rotation: float = None
+    rotationX: float = None
+    rotationY: float = None
+    saveEnabled: bool = None
+    scaleX: float = None
+    scaleY: float = None
+    screenReaderFocusable: bool = None
+    scrollIndicators: ScrollEnum = None
+    scrollX: str = None
+    scrollY: str = None
+    scrollbarAlwaysDrawHorizontalTrack: bool = None
+    scrollbarAlwaysDrawVerticalTrack: bool = None
+    scrollbarDefaultDelayBeforeFade: int = None
+    scrollbarFadeDuration: int = None
+    scrollbarSize: str = None
+    scrollbarStyle: StyleEnum = None
+    scrollbarThumbHorizontal: str = None
+    scrollbarThumbVertical: str = None
+    scrollbarTrackHorizontal: str = None
+    scrollbarTrackVertical: str = None
+    scrollbars: ScrollbarsEnum = None
+    soundEffectsEnabled: bool = None
+    stateListAnimator: str = None
+    tag: str = None
+    textAlignment: AlignEnum = None
+    textDirection: TextDirectionEnum = None
+    theme: str = None
+    tooltipText: str = None
+    transformPivotX: str = None
+    transformPivotY: str = None
+    transitionName: str = None
+    translationX: str = None
+    translationY: str = None
+    translationZ: str = None
+    visibility: VisibilityEnum = None
