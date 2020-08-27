@@ -4,5 +4,5 @@ from epyk_mobile.interfaces.android import ViewGroup
 
 
 @dataclass
-class AbsolutLayout(ViewGroup):
+class AbsoluteLayout(ViewGroup):
     pass

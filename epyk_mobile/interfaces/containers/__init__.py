@@ -1,7 +1,8 @@
 from dataclasses import dataclass
+from epyk_mobile.interfaces.layouts import AbsoluteLayout
+from epyk_mobile.interfaces.android import ViewGroup
 
-from epyk_mobile.interfaces.layouts import AbsolutLayout
 
-
-class WebView(AbsolutLayout):
+@dataclass
+class WebView(ViewGroup, AbsoluteLayout):
     pass
