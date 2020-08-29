@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Any
-
+import xml.etree.ElementTree as ET
+import json
 
 from epyk_mobile.core.constants import (
     ImportantEnum,
@@ -44,10 +45,44 @@ class AppLayout:
 
 
 @dataclass
-class ViewObject:
+class View:
     id: str
     layout_width: str
     layout_height: str
+
+    def __post_init__(self):
+        self.id = f'@+id/{self.id}'
+        self.__node = ET.Element(self.__class__.__name__)
+        self.__app_layout = AppLayout()
+        self.__tool_layout = ToolsLayout()
+        self.__child_nodes = []
+
+    def __add__(self, node):
+        node.inReport = False
+        self.__child_nodes.append(node)
+
+    @property
+    def app(self):
+        return self.__app_layout
+
+    @property
+    def tools(self):
+        return self.__tool_layout
+
+    def __forge(self):
+        for attr_name, attr_val in self.__dict__.items():
+            if attr_val is not None and not attr_name.startswith('_'):
+                print(attr_name, attr_val)
+                if type(attr_val) == bool:
+                    self.__node.set(f'android:{attr_name}', json.dumps(attr_val))
+                else:
+                    self.__node.set(f'android:{attr_name}', attr_val)
+        for child_node in self.__child_nodes:
+            self.__node.append(child_node.forge())
+        return self.__node
+
+    def __str__(self):
+        return ET.tostring(self.__forge(), encoding='unicode')
 
 
 @dataclass
@@ -151,7 +186,7 @@ class ViewDefault:
 
 
 @dataclass
-class ViewGroup(ViewDefault, ViewObject):
+class ViewGroup(ViewDefault, View):
     addStatesFromChildren: bool = None
     alwaysDrawnWithCache: bool = None
     animateLayoutChanges: bool = None
@@ -166,7 +201,7 @@ class ViewGroup(ViewDefault, ViewObject):
 
 
 @dataclass
-class ImageView(ViewDefault, ViewObject):
+class ImageView(ViewDefault, View):
     adjustViewBounds: bool = None
     baseline: str = None
     baselineAlignBottom: bool = None
@@ -180,7 +215,7 @@ class ImageView(ViewDefault, ViewObject):
 
 
 @dataclass
-class TextViewObject(ViewDefault, ViewObject):
+class TextView(ViewDefault, View):
     """
     Python interface for the TextView Android object
 

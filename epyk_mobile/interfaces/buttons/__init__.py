@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from epyk_mobile.interfaces.android import TextViewObject, ImageView
+from epyk_mobile.interfaces.android import TextView, ImageView
 
 
 @dataclass
-class Button(TextViewObject):
+class Button(TextView):
     pass
 
 

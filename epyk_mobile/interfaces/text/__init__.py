@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Any
-from epyk_mobile.interfaces.android import ViewObject, ViewDefault
+from epyk_mobile.interfaces.android import View, ViewDefault
 from epyk_mobile.core.constants import (
     AutoLinkEnum,
     AutoSizeTextEnum,
@@ -21,7 +21,7 @@ from epyk_mobile.core.constants import (
 
 
 @dataclass
-class TextiViewObject(ViewDefault, ViewObject):
+class TextView(ViewDefault, View):
     """
     Python interface for the TextView Android object
 
