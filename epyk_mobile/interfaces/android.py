@@ -35,12 +35,68 @@ from epyk_mobile.core.constants import (
     PersistentDrawingCache,
 )
 
-
-class ToolsLayout:
-    pass
-
-
+@dataclass
 class AppLayout:
+    barrierAllowsGoneWidgets: bool = None
+    barrierDirection: str = None
+    chainUseRtl: bool = None
+    constraintSet: str = None
+    constraint_referenced_ids: str = None
+    content: str = None
+    emptyVisibility: str = None
+    layout_constrainedHeight: bool = None
+    layout_constrainedWidth: bool = None
+    layout_constraintBaseline_creator: int = None
+    layout_constraintBaseline_toBaselineOf: str = None
+    layout_constraintBottom_creator: int = None
+    layout_constraintBottom_toBottomOf: str = None
+    layout_constraintBottom_toTopOf: str = None
+    layout_constraintCircle: str = None
+    layout_constraintCircleAngle: int = None
+    layout_constraintCircleRadius: str = None
+    layout_constraintDimensionRatio: str = None
+    layout_constraintEnd_toEndOf: str = None
+    layout_constraintEnd_toStartOf: str = None
+    layout_constraintGuide_begin: str = None
+    layout_constraintGuide_end: str = None
+    layout_constraintGuide_percent: float = None
+    layout_constraintHeight_default: str = None
+    layout_constraintHeight_max: str = None
+    layout_constraintHeight_min: str = None
+    layout_constraintHeight_percent: float = None
+    layout_constraintHorizontal_bias: float = None
+    layout_constraintHorizontal_chainStyle: str = None
+    layout_constraintHorizontal_weight: float = None
+    layout_constraintLeft_creator: int = None
+    layout_constraintLeft_toLeftOf: str = None
+    layout_constraintLeft_toRightOf: str = None
+    layout_constraintRight_creator: int = None
+    layout_constraintRight_toLeftOf: str = None
+    layout_constraintRight_toRightOf: str = None
+    layout_constraintStart_toEndOf: str = None
+    layout_constraintStart_toStartOf: str = None
+    layout_constraintTop_creator: int = None
+    layout_constraintTop_toBottomOf: str = None
+    layout_constraintTop_toTopOf: str = None
+    layout_constraintVertical_bias: float = None
+    layout_constraintVertical_chainStyle: str = None
+    layout_constraintVertical_weight: float = None
+    layout_constraintWidth_default: str = None
+    layout_constraintWidth_max: str = None
+    layout_constraintWidth_min: str = None
+    layout_constraintWidth_percent: float = None
+    layout_editor_absoluteX: str = None
+    layout_editor_absoluteY: str = None
+    layout_goneMarginBottom: str = None
+    layout_goneMarginEnd: str = None
+    layout_goneMarginLeft: str = None
+    layout_goneMarginRight: str = None
+    layout_goneMarginStart: str = None
+    layout_goneMarginTop: str = None
+    layout_optimizationLevel: str = None
+
+
+class ToolsLayout(AppLayout):
     pass
 
 
@@ -51,7 +107,7 @@ class View:
     layout_height: str
 
     def __post_init__(self):
-        self.id = f'@+id/{self.id}'
+        self.id = f"@+id/{self.id}"
         self.__node = ET.Element(self.__class__.__name__)
         self.__app_layout = AppLayout()
         self.__tool_layout = ToolsLayout()
@@ -71,18 +127,23 @@ class View:
 
     def __forge(self):
         for attr_name, attr_val in self.__dict__.items():
-            if attr_val is not None and not attr_name.startswith('_'):
-                print(attr_name, attr_val)
+            if attr_val is not None and not attr_name.startswith("_"):
                 if type(attr_val) == bool:
-                    self.__node.set(f'android:{attr_name}', json.dumps(attr_val))
+                    self.__node.set(f"android:{attr_name}", json.dumps(attr_val))
                 else:
-                    self.__node.set(f'android:{attr_name}', attr_val)
+                    self.__node.set(f"android:{attr_name}", attr_val)
+        for attr_name, attr_val in self.app.__dict__.items():
+            if attr_val is not None and not attr_name.startswith("_"):
+                if type(attr_val) == bool:
+                    self.__node.set(f"app:{attr_name}", json.dumps(attr_val))
+                else:
+                    self.__node.set(f"app:{attr_name}", attr_val)
         for child_node in self.__child_nodes:
             self.__node.append(child_node.forge())
         return self.__node
 
     def __str__(self):
-        return ET.tostring(self.__forge(), encoding='unicode')
+        return ET.tostring(self.__forge(), encoding="unicode")
 
 
 @dataclass
